@@ -1,0 +1,61 @@
+import java.util.Scanner;
+class atm{
+    int balance=0;
+    public void withdraw(int w){
+
+        if(w>balance){
+            System.out.println("You do not have sufficient amount to withdraw ");
+        }
+        else{
+            balance-=w;
+            System.out.println("The amount has been successfully withdrawn!");
+
+        }
+    }
+    public void deposit(int d){
+
+        balance+=d;
+        System.out.println("The amount has been successfully deposited!");
+    }
+    public void display(){
+        System.out.println("Your current account balance is: "+balance+" Rs.");
+    }
+}
+class codsoft3{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int ch=0;
+        atm user=new atm();
+        do{
+            System.out.println("--------------------------------");
+            System.out.println("Bank Transactions: ");
+            System.out.println("1. Deposit");
+            System.out.println("2. Withdraw");
+            System.out.println("3. Remaining account Balance");
+            System.out.println("4. Exit");
+            System.out.println("--------------------------------");
+            System.out.print("Enter the transaction: ");
+            ch=sc.nextInt();
+            switch(ch){
+                case 1:
+                    System.out.print("Enter the amount to be deposit: ");
+                    int d=sc.nextInt();
+                    user.deposit(d);
+                    break;
+                case 2:
+                    System.out.print("Enter the amount to be withdraw: ");
+                    int w=sc.nextInt();
+                    user.withdraw(w);
+                    break;
+                case 3:
+                    user.display();
+                    break;
+                case 4:
+                    System.out.println("Thank you");
+                    break;
+                default:
+                    System.out.println("Wrong choice");
+            }
+        }while (ch!=4);
+    }
+}
